@@ -18,6 +18,10 @@ mongoose
 app.use(cors()); //fix cors problems
 app.use(express.json()); //enable back end to read data
 
+app.use("/", (req, res) => {
+  return res.status(200).json("done for home page");
+});
+
 app.use("/api/users", user_routes);
 
 app.use((req, res) => {
