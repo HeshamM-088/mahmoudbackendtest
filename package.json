@@ -2,7 +2,7 @@
   "name": "crud",
   "version": "1.0.0",
   "description": "",
-  "main": "Index.js",
+  "main": "index.js",
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon index.js",
