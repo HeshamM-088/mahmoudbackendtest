@@ -1,10 +1,15 @@
 const express = require("express");
 const cors = require("cors");
-const { user_routes } = require("../routes/userRoutes");
-require("dotenv").config();
-const app = express();
-const DB = process.env.DB;
 const mongoose = require("mongoose");
+const { router } = require("../routes/userRoutes");
+require("dotenv").config();
+
+const app = express();
+
+app.use(cors()); //fix cors problems
+app.use(express.json()); //enable back end to read data
+
+const DB = process.env.DB;
 
 mongoose
   .connect(DB)
@@ -15,14 +20,7 @@ mongoose
     console.log("DB disconnected");
   });
 
-app.use(cors()); //fix cors problems
-app.use(express.json()); //enable back end to read data
-
-app.use("/", (req, res) => {
-  return res.status(200).json("done for home page");
-});
-
-app.use("/api/users", user_routes);
+app.use("/api/users", router);
 
 app.use((req, res) => {
   return res.status(500).json({
@@ -35,4 +33,4 @@ app.listen(3000, () => {
   console.log("server runs");
 });
 
-module.exports = app;
+// module.exports = app;
