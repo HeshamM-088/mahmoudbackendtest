@@ -55,8 +55,6 @@ const login = async (req, res) => {
 
   const matched = await bcrypt.compare(password, loggedUser.password);
 
-  //console.log(matched);
-
   const token = jwt.sign(
     {
       email,
