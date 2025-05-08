@@ -14,7 +14,7 @@ mongoose
   .catch(() => {
     console.log("DB disconnected");
   });
-//app.use()  is a method used to mount middleware functions
+
 app.use(cors()); //fix cors problems
 app.use(express.json()); //enable back end to read data
 
@@ -31,10 +31,4 @@ app.use((req, res) => {
   });
 });
 
-const PORT = 3000;
-// app.listen(PORT, () => {
-//   console.log("server running");
-// });
-
 module.exports = app;
-/*47*/
